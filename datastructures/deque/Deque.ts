@@ -30,6 +30,12 @@ export class Deque<T> {
     return element
   }
 
+  /**
+   * returns the first element of the deque
+   * @method peekFront
+   * @for Deque
+   * @returns { any }
+   */
   peekFront() {
     return this.items[this.lowestCount]
   }
