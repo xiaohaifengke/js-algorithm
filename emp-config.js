@@ -1,6 +1,5 @@
 const withVue3 = require('@efox/emp-vue3')
 const path = require('path')
-const StylelintPlugin = require('stylelint-webpack-plugin')
 const ProjectRootPath = path.resolve('./')
 const { getConfig } = require(path.join(ProjectRootPath, './src/config'))
 // const svgoLoaderConfigs = require(path.join(ProjectRootPath, './src/icons/svgo-loader.conf'))
@@ -33,10 +32,6 @@ module.exports = withVue3(({ config, env, empEnv }) => {
       symbolId: 'icon-[name]'
     })
     .end()
-  config.plugin("stylelint").use(StylelintPlugin, [{
-    files: ['src/**/*.vue', 'src/styles/**/*.((s(c|a)|c)ss)'],
-    fix: true
-  }])
   // 配置 index.html
   config.plugin('html').tap(args => {
     args[0] = {
