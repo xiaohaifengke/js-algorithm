@@ -2,9 +2,9 @@ import { Node } from '@/models/linked-list-models'
 import { defaultEquals } from '@/utils'
 
 export class LinkedList<T> {
-  private count = 0
-  private head: Node<T> | undefined = undefined
-  constructor(private equalsFn = defaultEquals) {
+  protected count = 0
+  protected head: Node<T> | undefined = undefined
+  constructor(protected equalsFn = defaultEquals) {
     this.equalsFn = equalsFn
   }
 
@@ -24,7 +24,7 @@ export class LinkedList<T> {
     return ++this.count
   }
   // 向链表的特定位置插入一个新元素
-  insert(element: any, index: number) {
+  insert(element: T, index: number) {
     if (index >= 0 && index <= this.count) {
       const node = new Node(element)
       if (index === 0) {
@@ -51,12 +51,12 @@ export class LinkedList<T> {
     }
   }
   // 从链表中移除一个元素
-  remove(element: any) {
+  remove(element: T) {
     const index = this.indexOf(element)
     return this.removeAt(index)
   }
   // 返回元素在链表中的索引。如果链表中没有该元素则返回-1。
-  indexOf(element: any) {
+  indexOf(element: T) {
     let current = this.head
     for (let i = 0; i < this.count && current != null; i++) {
       if (this.equalsFn(element, current.element)) {

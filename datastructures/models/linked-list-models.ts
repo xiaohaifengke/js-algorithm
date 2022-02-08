@@ -1,8 +1,20 @@
 export class Node<T> {
   public element: T
   public next: Node<T> | undefined
-  constructor(element: T) {
+  constructor(element: T, next?: Node<T> | undefined) {
     this.element = element
-    this.next = undefined
+    this.next = next
+  }
+}
+
+export class DoublyNode<T> extends Node<T> {
+  public prev: DoublyNode<T> | undefined
+  constructor(
+    element: T,
+    next?: DoublyNode<T> | undefined,
+    prev?: DoublyNode<T> | undefined
+  ) {
+    super(element, next)
+    this.prev = prev
   }
 }
