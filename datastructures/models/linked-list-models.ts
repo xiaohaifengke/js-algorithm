@@ -8,7 +8,9 @@ export class Node<T> {
 }
 
 export class DoublyNode<T> extends Node<T> {
-  public prev: DoublyNode<T> | undefined
+  public prev: DoublyNode<T> | undefined = undefined
+  public next: DoublyNode<T> | undefined = undefined
+
   constructor(
     element: T,
     next?: DoublyNode<T> | undefined,

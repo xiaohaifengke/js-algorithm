@@ -9,7 +9,7 @@ export class LinkedList<T> {
   }
 
   // 向链表尾部添加一个新元素
-  push(element: T) {
+  push(element: T): number {
     let lastNode: Node<T>
     const node = new Node<T>(element)
     if (this.head == null) {
@@ -24,7 +24,7 @@ export class LinkedList<T> {
     return ++this.count
   }
   // 向链表的特定位置插入一个新元素
-  insert(element: T, index: number) {
+  insert(element: T, index: number): boolean {
     if (index >= 0 && index <= this.count) {
       const node = new Node(element)
       if (index === 0) {
@@ -43,7 +43,7 @@ export class LinkedList<T> {
   // 返回链表中特定位置的元素。如果链表中不存在这样的元素，则返回 undefined
   getElementAt(index: number) {
     if (index >= 0 && index <= this.count) {
-      let node: Node<T> | undefined = this.head
+      let node = this.head
       for (let i = 0; i < index && node != null; i++) {
         node = node.next
       }
@@ -56,7 +56,7 @@ export class LinkedList<T> {
     return this.removeAt(index)
   }
   // 返回元素在链表中的索引。如果链表中没有该元素则返回-1。
-  indexOf(element: T) {
+  indexOf(element: T): number {
     let current = this.head
     for (let i = 0; i < this.count && current != null; i++) {
       if (this.equalsFn(element, current.element)) {
@@ -83,11 +83,11 @@ export class LinkedList<T> {
     }
   }
   // 返回链表包含的元素个数，与数组的 length 属性类似。
-  size() {
+  size(): number {
     return this.count
   }
   // 如果链表中不包含任何元素，返回 true，如果链表长度大于 0则返回 false。
-  isEmpty() {
+  isEmpty(): boolean {
     return this.size() === 0
   }
   getHead() {
@@ -98,7 +98,7 @@ export class LinkedList<T> {
    * 返回表示整个链表的字符串。由于列表项使用了 Node 类，就需要重写继
    * 承自 JavaScript 对象默认的 toString 方法，让其只输出元素的值。
    */
-  toString() {
+  toString(): string {
     let str = ''
     let current = this.head
     for (let i = 0; i < this.count && current != null; i++) {
